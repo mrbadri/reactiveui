@@ -1,5 +1,5 @@
 {
-  "name": "@reactiveui/material-testing",
+  "name": "@builder-testing/material-testing",
   "version": "1.0.0",
   "description": "production-ready foundational react component",
   "main": "./dist/cjs/index.js",
@@ -8,12 +8,15 @@
   "scripts": {
     "build": "npm run build:esm && npm run build:cjs",
     "build:esm": "tsc",
-    "build:csj": "tsc --module commonjs --outDir dist/csj",
+    "build:cjs": "tsc --module commonjs --outDir dist/cjs",
     "lint": "eslint \"{**/*,*}.{js, ts, jsx, tsx}\"",
     "prettier": "prettier --write \"./{src,tests}/**/*.{js,ts,jsx,tsx}\"",
     "test": "jest --config jestconfig.json",
     "prepare": "npm run build",
     "prepublishOnly": "npm run test && npm run prettier && npm run lint"
+  },
+  "repository": {
+    "type": "git"
   },
   "keywords": [],
   "author": "",
