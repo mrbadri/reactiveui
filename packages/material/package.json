@@ -2,16 +2,30 @@
   "name": "@reactiveui/material-testing",
   "version": "1.0.0",
   "description": "production-ready foundational react component",
-  "main": "index.js",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
   "scripts": {
-    "build": "tsc",
+    "build": "npm run build:esm && npm run build:cjs",
+    "build:esm": "tsc",
+    "build:csj": "tsc --module commonjs --outDir dist/csj",
     "lint": "eslint \"{**/*,*}.{js, ts, jsx, tsx}\"",
     "prettier": "prettier --write \"./{src,tests}/**/*.{js,ts,jsx,tsx}\"",
-    "test": "jest --config jestconfig.json"
+    "test": "jest --config jestconfig.json",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run test && npm run prettier && npm run lint"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "peerDependencies": {
+    "react": ">=18"
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
   "devDependencies": {
     "@testing-library/react": "14.0.0",
     "@types/jest": "^29.5.1",
